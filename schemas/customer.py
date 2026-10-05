@@ -6,3 +6,8 @@ class Customer(BaseModel):
     name: str
     email: str
     telephone: str
+
+class CreateUpdateCustomer(BaseModel):
+    name: str
+    email: str
+    telephone: str
