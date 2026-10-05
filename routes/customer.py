@@ -51,3 +51,12 @@ async def update_customer(
     if not updated_customer:
         raise HTTPException(status_code=404, detail='Customer not founded')
     return updated_customer
+
+@router.delete("/{customer_id}", status_code=204)
+async def delete_customer(
+    customer_repository: Annotated[CustomerRepository, Depends(obtain_customer_repository)],
+    customer_id
+): 
+    success = await customer_repository.delete_customer(customer_id)
+    if not success:
+        raise HTTPException(status_code=404, detail='Customer not founded')
